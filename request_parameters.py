@@ -3,7 +3,11 @@ from dataclasses import dataclass
 
 @dataclass
 class Parameters:
-    request_header = {"API-KEY": "Replace with the validated API KEY"}
+    request_header = {"API-KEY": "Replace with the validated API KEY",
+                      "Content-Type": "application/json",
+                      "Accept": "*/*",
+                      "Connection": "keep-alive",
+                      "Accept-Encoding": "gzip, deflate, br"}
 
     search_object = {
         "start_address": "44 Tehama Street, San Francisco, CA, USA",
