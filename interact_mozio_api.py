@@ -6,12 +6,6 @@ from cheapest_vehicle_with_provider import find_cheapest_from_provider
 
 MOZIO_URL = 'Replace with the actual Mozio URL'
 
-headers = Parameters().request_header
-
-session = requests.Session()
-session.headers.update(headers)
-session.cookie = id(session)
-
 
 class Search:
     @staticmethod
@@ -53,6 +47,11 @@ class Cancellation:
 
 
 if __name__ == "__main__":
+    headers = Parameters().request_header
+
+    session = requests.Session()
+    session.headers.update(headers)
+
     find_reservation = Search()
     search_id_param = find_reservation.search()
     if search_id_param is not False:
@@ -66,3 +65,5 @@ if __name__ == "__main__":
         cancel_reservation = make_cancellation.cancel(reservation_id_param)
     else:
         print("There is no result with the search object!")
+
+    session.close()
